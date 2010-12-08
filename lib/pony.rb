@@ -41,6 +41,9 @@ module Pony
 			attachment.set_content_disposition "attachment", "filename" => name
 			mail.parts.push attachment
 		end
+		(options[:headers] ||= {}).each do |key, value|
+			mail[key] = value
+		end
 		mail
 	end
 
